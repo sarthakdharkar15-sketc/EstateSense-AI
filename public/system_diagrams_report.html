@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House Price Prediction System - Design Diagrams Report</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0b0f19;
+      color: #cbd5e1;
+      margin: 0;
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 40px;
+      border-radius: 16px;
+      border: 1px solid #1e293b;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    h1 {
+      font-size: 2.2rem;
+      color: #6366f1;
+      border-bottom: 2px solid #1e293b;
+      padding-bottom: 12px;
+      margin-top: 0;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+      color: #38bdf8;
+      border-bottom: 1px solid #1e293b;
+      padding-bottom: 8px;
+      margin-top: 40px;
+      font-weight: 600;
+    }
+    
+    h3 {
+      font-size: 1.1rem;
+      color: #e2e8f0;
+      margin-top: 20px;
+    }
+    
+    p, li {
+      font-size: 0.95rem;
+      color: #94a3b8;
+    }
+    
+    ul {
+      padding-left: 20px;
+    }
+    
+    li {
+      margin-bottom: 8px;
+    }
+    
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #1e293b;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #f43f5e;
+      font-size: 0.9em;
+    }
+    
+    .mermaid {
+      background-color: #0f172a !important;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #1e293b;
+      margin: 24px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+      overflow-x: auto;
+    }
+    
+    .mermaid svg {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    
+    .actions-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    
+    .btn {
+      background-color: #6366f1;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+    
+    .btn:hover {
+      background-color: #4f46e5;
+      transform: translateY(-1px);
+    }
+    
+    .btn-secondary {
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      color: #cbd5e1;
+      box-shadow: none;
+    }
+    
+    .btn-secondary:hover {
+      background-color: #334155;
+      color: white;
+    }
+    
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 12mm 15mm 15mm 15mm;
+      }
+
+      body {
+        background-color: white !important;
+        color: #0f172a !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      
+      .container {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        background: transparent !important;
+        max-width: 100% !important;
+      }
+      
+      .actions-bar {
+        display: none !important;
+      }
+      
+      h1 {
+        color: #1e3a8a !important;
+        border-bottom: 2px solid #ccc !important;
+        page-break-after: always !important;
+        padding-bottom: 20px !important;
+      }
+      
+      h2 {
+        color: #0f766e !important;
+        border-bottom: 1.5px solid #cbd5e1 !important;
+        page-break-before: always !important;
+        break-before: page !important;
+        padding-top: 10px !important;
+      }
+      
+      h3 {
+        color: #0f172a !important;
+      }
+      
+      p, li {
+        color: #334155 !important;
+      }
+      
+      .mermaid {
+        background-color: #f8fafc !important;
+        border: 1px solid #e2e8f0 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        margin: 16px 0 !important;
+        padding: 16px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+      }
+
+      .mermaid svg {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+        max-height: 430px !important;
+        display: block !important;
+        margin: 0 auto !important;
+      }
+    }
+  </style>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      securityLevel: 'loose'
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>House Price Prediction System - System Design Diagrams</h1>
+    
+    <div class="actions-bar">
+      <button class="btn" onclick="window.print()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        Print / Save to PDF
+      </button>
+      <a href="system_diagrams_report.md" download class="btn btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Download Raw Markdown File (.md)
+      </a>
+    </div>
+
+    <p>This report provides the system architecture, data models, controls, and states for the **EstateSense AI House Price Prediction Platform with Explainable AI (SHAP)**.</p>
+
+    <!-- SECTION 1 -->
+    <h2>1. Use Case Diagram</h2>
+    <p>The Use Case Diagram illustrates the interactions between the system's actors (standard User/Member and the Administrator) and the functionalities provided by the application.</p>
+    
+    <div class="mermaid">
+    graph TD
+    classDef actor fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#f8fafc;
+    classDef userCase fill:#1e293b,stroke:#10b981,stroke-width:1.5px,color:#f8fafc;
+    classDef adminCase fill:#1e1b4b,stroke:#8b5cf6,stroke-width:1.5px,color:#f8fafc;
+
+    subgraph Actors["System Actors"]
+        User((User / Member)):::actor
+        Admin((Administrator)):::actor
+    end
+
+    subgraph CorePlatform["Core Valuation Platform"]
+        UC1([1. Register & Authenticate]):::userCase
+        UC2([2. Predict Property Price]):::userCase
+        UC3([3. Explainable AI SHAP]):::userCase
+        UC4([4. Spatial GIS Map Analysis]):::userCase
+        UC5([5. Compare Model Performance]):::userCase
+    end
+
+    subgraph AdminModule["Admin & Machine Learning Operations"]
+        UC6([6. Upload Custom Property CSV]):::adminCase
+        UC7([7. Dynamically Fit & Train Model]):::adminCase
+        UC8([8. Real-Time Cross Validation]):::adminCase
+        UC9([9. Configure Latency & Benchmarks]):::adminCase
+    end
+
+    User --> UC1
+    User --> UC2
+    User --> UC3
+    User --> UC4
+    User --> UC5
+
+    Admin --> User
+    Admin --> UC6
+    Admin --> UC7
+    Admin --> UC8
+    Admin --> UC9
+    </div>
+
+    <h3>Description of Use Cases:</h3>
+    <ul>
+      <li><strong>Register & Authenticate:</strong> Users can create an account and log in. An administrator has special elevated roles.</li>
+      <li><strong>View Project Dashboard:</strong> Displays general information, performance curves, global feature importance charts, and key stats.</li>
+      <li><strong>Predict House Price:</strong> Input area, bedrooms, bathrooms, location, age, parking, type, and furnishing state to calculate expected valuations.</li>
+      <li><strong>Interpret Local SHAP Explanations:</strong> Explains why the prediction was made, breaking down the exact pricing contribution of each feature.</li>
+      <li><strong>Explore Spatial Map Analysis:</strong> Inspects geographically plotted properties on the city map (Bengaluru coordinates) and filters them.</li>
+      <li><strong>Compare Model Performance:</strong> Views metrics (MAE, RMSE, R2, MAPE) of baseline vs. ML models.</li>
+      <li><strong>Upload Custom Dataset (Admin):</strong> Allows uploading of custom property CSV files to fit the prediction model.</li>
+      <li><strong>Train/Retrain Model (Admin):</strong> Dynamically recalculates weights, coefficients, and validation metrics.</li>
+    </ul>
+
+    <!-- SECTION 2 -->
+    <h2>2. Entity-Relationship Model (ER Model)</h2>
+    <p>The ER Model defines the schema structures and relationships of the logical entities managed in localStorage and runtime states.</p>
+    
+    <div class="mermaid">
+    erDiagram
+    USER ||--o{ PREDICTION_RESULT : performs
+    USER ||--o{ PROPERTY : uploads
+    NEIGHBORHOOD_CONFIG ||--o{ PROPERTY : configures
+    PREDICTION_RESULT ||--|{ SHAP_VALUE : generates
+
+    USER {
+        int id PK
+        string name
+        string role
+        string token
+    }
+    PROPERTY {
+        int id PK
+        int area
+        int bedrooms
+        int age
+        string type
+        string location FK
+        float price
+        float hedonicPrice
+        float residual
+    }
+    NEIGHBORHOOD_CONFIG {
+        string location PK
+        int baseRate
+        float lat
+        float lng
+        float distance
+    }
+    PREDICTION_RESULT {
+        int prediction_id PK
+        int user_id FK
+        float final_prediction
+        float lower_bound
+        float upper_bound
+        string explanation
+    }
+    SHAP_VALUE {
+        int id PK
+        int prediction_id FK
+        string feature_name
+        float contribution_value
+    }
+    </div>
+
+    <!-- SECTION 3 -->
+    <h2>3. Data Flow Diagram (DFD) - Level 1</h2>
+    <p>The DFD shows how information moves from external sources through processes, gets read/written to stores, and renders back to the user.</p>
+    
+    <div class="mermaid">
+    graph TD
+    classDef entity fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#f8fafc;
+    classDef process fill:#1e1b4b,stroke:#8b5cf6,stroke-width:2px,color:#f8fafc;
+    classDef store fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#f8fafc;
+
+    User[User / Administrator]:::entity
+
+    subgraph Processes["Core Processing Engine"]
+        P1(P1: Authenticate User & Admin):::process
+        P2(P2: Predict Price & Residuals):::process
+        P3(P3: Local SHAP Explanations):::process
+        P4(P4: Spatial GIS Clustering):::process
+        P5(P5: Re-train Model & Coefficients):::process
+    end
+
+    subgraph DataStores["Storage Systems"]
+        D1[(D1: User Accounts Store)]:::store
+        D2[(D2: Properties & Baseline Store)]:::store
+        D3[(D3: Neighborhoods & Rates Store)]:::store
+        D4[(D4: Performance & Logs Store)]:::store
+    end
+
+    User -->|Credentials| P1
+    P1 <-->|Read/Write Auth| D1
+
+    User -->|Property Details| P2
+    P2 <-->|Fetch Baselines| D2
+    P2 <-->|Fetch Coefficients| D3
+    P2 -->|Hedonic & ML Estimate| User
+
+    P2 -->|Error Residuals| P3
+    P3 -->|SHAP Waterfall Values| User
+
+    User -->|Spatial Filters| P4
+    P4 <-->|Geo Lat/Lng Records| D2
+
+    User -->|Custom CSV| P5
+    P5 -->|Update Regression Weights| D3
+    P5 -->|Update Metrics| D4
+    </div>
+
+    <!-- SECTION 4 -->
+    <h2>4. Control Flow Diagram (CFD)</h2>
+    <p>The Control Flow Diagram charts decisions, function routing, and modular pipeline operations across views.</p>
+    
+    <div class="mermaid">
+    graph TD
+    classDef startNode fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#f8fafc;
+    classDef routerNode fill:#1e1b4b,stroke:#8b5cf6,stroke-width:2px,color:#f8fafc;
+    classDef stepNode fill:#1e293b,stroke:#38bdf8,stroke-width:1.5px,color:#f8fafc;
+    classDef actionNode fill:#064e3b,stroke:#10b981,stroke-width:1.5px,color:#f8fafc;
+
+    Start([App Initialized & Check Auth]):::startNode --> Router{Module Router}:::routerNode
+
+    subgraph Pipe1["1. Prediction Pipeline"]
+        Router --> P_In[Input Form Parameters]:::stepNode
+        P_In --> P_Val{Validate Inputs}
+        P_Val -->|Valid| P_Compute[Compute Hedonic + ML Residual]:::actionNode
+        P_Compute --> P_SHAP[Generate Local SHAP Values]:::actionNode
+        P_SHAP --> P_Out[Render Price & Waterfall Cards]:::stepNode
+    end
+
+    subgraph Pipe2["2. Spatial GIS Pipeline"]
+        Router --> S_Filter[Apply Map Filters]:::stepNode
+        S_Filter --> S_Query[Query Geo Coordinates]:::actionNode
+        S_Query --> S_Map[Update Leaflet Marker Scatter]:::stepNode
+    end
+
+    subgraph Pipe3["3. Dataset & Retraining Pipeline"]
+        Router --> D_Upload[Admin Uploads CSV]:::stepNode
+        D_Upload --> D_Parse[Parse Dataset Rows]:::actionNode
+        D_Parse --> D_Fit[trainModelOnDataset]:::actionNode
+        D_Fit --> D_Metrics[Update R2, RMSE & Weights]:::stepNode
+    end
+    </div>
+
+    <!-- SECTION 5 -->
+    <h2>5. State Transition Diagram (STD)</h2>
+    <p>The State Transition Diagram outlines how modules and processing cycles transition across user states.</p>
+    
+    <div class="mermaid">
+    stateDiagram-v2
+    [*] --> LoggedOut
+    LoggedOut --> LoggedIn : Authenticate Success
+    LoggedIn --> LoggedOut : Logout / Clear Session
+
+    state LoggedIn {
+        [*] --> DashboardView
+        
+        DashboardView --> PredictPipeline : Select Predict
+        state PredictPipeline {
+            [*] --> FormIdle
+            FormIdle --> Computing : Click Predict
+            Computing --> ValuationReady : Compute Hedonic + Residual + SHAP
+            ValuationReady --> FormIdle : Reset / Modify
+        }
+        PredictPipeline --> DashboardView : Return to Dashboard
+
+        DashboardView --> SpatialMap : Select Spatial GIS
+        SpatialMap --> DashboardView : Return to Dashboard
+
+        DashboardView --> DatasetTraining : Upload CSV (Admin)
+        state DatasetTraining {
+            [*] --> CSVReady
+            CSVReady --> RetrainingModel : Parse Rows
+            RetrainingModel --> MetricsUpdated : Save Coefficients
+        }
+        DatasetTraining --> DashboardView : Return to Dashboard
+    }
+    </div>
+  </div>
+</body>
+</html>

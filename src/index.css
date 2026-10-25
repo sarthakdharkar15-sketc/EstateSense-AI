@@ -1,0 +1,445 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Override Indigo classes to use Emerald colors */
+  --color-indigo-50: #f0fdf4;
+  --color-indigo-100: #dcfce7;
+  --color-indigo-200: #bbf7d0;
+  --color-indigo-300: #86efac;
+  --color-indigo-400: #4ade80;
+  --color-indigo-500: #10b981;
+  --color-indigo-600: #059669;
+  --color-indigo-700: #047857;
+  --color-indigo-800: #065f46;
+  --color-indigo-900: #064e3b;
+  --color-indigo-950: #022c22;
+
+  /* Override Violet classes to use Fuchsia colors */
+  --color-violet-50: #fdf4ff;
+  --color-violet-100: #fae8ff;
+  --color-violet-200: #f5d0fe;
+  --color-violet-300: #f0abfc;
+  --color-violet-400: #e879f9;
+  --color-violet-500: #d946ef;
+  --color-violet-600: #c084fc;
+  --color-violet-700: #a21caf;
+  --color-violet-800: #86198f;
+  --color-violet-900: #701a75;
+  --color-violet-950: #4a044e;
+
+  /* Override Blue classes to use Cyan colors */
+  --color-blue-50: #ecfeff;
+  --color-blue-100: #cffafe;
+  --color-blue-200: #a5f3fc;
+  --color-blue-300: #67e8f9;
+  --color-blue-400: #22d3ee;
+  --color-blue-500: #06b6d4;
+  --color-blue-600: #0891b2;
+  --color-blue-700: #0e7490;
+  --color-blue-800: #155e75;
+  --color-blue-900: #164e63;
+  --color-blue-950: #083344;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :root {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, "Segoe UI", Roboto, Arial, sans-serif;
+    color-scheme: dark;
+    background-color: #08080a;
+    color: #f1f5f9;
+    --ios-spring: cubic-bezier(0.25, 1, 0.5, 1);
+    --ios-spring-snappy: cubic-bezier(0.32, 0.72, 0, 1);
+    --ios-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  body {
+    margin: 0;
+    scroll-behavior: smooth;
+    overscroll-behavior-y: none;
+    background-color: #060608;
+    min-height: 100vh;
+    overflow-x: hidden;
+    letter-spacing: -0.01em;
+  }
+
+  /* Hardware-accelerated fixed background decoupled from scroll repainting */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -20;
+    pointer-events: none;
+    background-color: #060608;
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+      radial-gradient(at 10% 10%, rgba(99, 102, 241, 0.12) 0px, transparent 55%),
+      radial-gradient(at 90% 15%, rgba(236, 72, 153, 0.12) 0px, transparent 60%),
+      radial-gradient(at 50% 85%, rgba(20, 184, 166, 0.10) 0px, transparent 55%),
+      radial-gradient(at 80% 80%, rgba(139, 92, 246, 0.10) 0px, transparent 55%),
+      radial-gradient(at 20% 80%, rgba(249, 115, 22, 0.08) 0px, transparent 50%);
+    background-size: 50px 50px, 50px 50px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Ultra-smooth custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(10, 10, 12, 0.4);
+    border-radius: 8px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    transition: background 0.25s ease;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(16, 185, 129, 0.5);
+  }
+
+  h1, h2, h3, h4 {
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Apple iOS-Style Interactive Elements with Spring Feedback */
+button, a, input, select, textarea {
+  transition: color 0.18s var(--ios-spring),
+              background-color 0.18s var(--ios-spring),
+              border-color 0.18s var(--ios-spring),
+              transform 0.18s var(--ios-spring),
+              box-shadow 0.18s var(--ios-spring),
+              opacity 0.18s var(--ios-spring);
+}
+
+/* Subtle iOS Haptic-Like Press Feedback */
+button:active:not(:disabled), 
+.ios-pressable:active:not(:disabled) {
+  transform: scale(0.975);
+  opacity: 0.9;
+}
+
+/* Apple iOS Frosted Glass & Surface Materials */
+.glass-panel, .ios-glass {
+  background: rgba(15, 16, 22, 0.82);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.32), inset 0 1px 0 0 rgba(255, 255, 255, 0.04);
+  transition: border-color 0.2s var(--ios-spring),
+              box-shadow 0.2s var(--ios-spring),
+              background-color 0.2s var(--ios-spring),
+              transform 0.2s var(--ios-spring);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(20, 22, 30, 0.90);
+  border-color: rgba(16, 185, 129, 0.25);
+  box-shadow: 0 12px 32px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Apple-Style Input Controls */
+.glass-input, .ios-input {
+  background: rgba(20, 21, 28, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #f8fafc;
+  transition: border-color 0.2s var(--ios-spring),
+              box-shadow 0.2s var(--ios-spring),
+              background-color 0.2s var(--ios-spring);
+}
+
+.glass-input:focus, .ios-input:focus {
+  outline: none;
+  border-color: rgba(16, 185, 129, 0.6);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
+  background: rgba(24, 25, 34, 0.95);
+}
+
+/* Apple iOS Segmented Control Capsule */
+.ios-segmented {
+  display: inline-flex;
+  padding: 3px;
+  background: rgba(18, 19, 26, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  gap: 3px;
+}
+
+.ios-segmented-item {
+  position: relative;
+  border-radius: 11px;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: -0.01em;
+  transition: all 0.22s var(--ios-spring);
+  cursor: pointer;
+}
+
+.ios-segmented-item.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+}
+
+.ios-segmented-item.active-emerald {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.9), rgba(5, 150, 105, 0.9));
+  color: #ffffff;
+  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+}
+
+.ios-segmented-item.active-indigo {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(79, 70, 229, 0.9));
+  color: #ffffff;
+  box-shadow: 0 2px 10px rgba(99, 102, 241, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Tabular Numbers for Accurate Financial Alignment */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.glow-blue {
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.15);
+}
+
+.glow-purple {
+  box-shadow: 0 0 25px rgba(217, 70, 239, 0.15);
+}
+
+.glow-purple {
+  box-shadow: 0 0 25px rgba(217, 70, 239, 0.15);
+}
+
+/* Active navigation styling */
+.nav-active {
+  background: rgba(16, 185, 129, 0.15);
+  border-left: 3px solid #10b981;
+  color: #ffffff;
+}
+
+/* Custom range input styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.1);
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+  transition: background-color 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #10b981;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.7);
+}
+
+/* Leaflet map style override to match dark theme */
+.leaflet-container {
+  background: #0d0e12 !important;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.leaflet-tile {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(17, 17, 21, 0.95) !important;
+  color: #f1f5f9 !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(17, 17, 21, 0.95) !important;
+}
+
+/* Modern Premium Animations & Aesthetics */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(0.4deg); }
+}
+
+.animate-float {
+  animation: float 6s infinite ease-in-out;
+  will-change: transform;
+}
+
+/* Page Transition Animation */
+@keyframes pageTransition {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-page-transition {
+  animation: pageTransition 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+.card-premium {
+  position: relative;
+  background: rgba(14, 15, 20, 0.84);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: transform 0.2s ease,
+              border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.card-premium:hover {
+  transform: translateY(-2px);
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 
+    0 12px 32px -8px rgba(0, 0, 0, 0.5),
+    0 0 16px 0 rgba(16, 185, 129, 0.08);
+}
+
+.card-premium-fuchsia {
+  position: relative;
+  background: rgba(14, 15, 20, 0.84);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: transform 0.2s ease,
+              border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.card-premium-fuchsia:hover {
+  transform: translateY(-2px);
+  border-color: rgba(217, 70, 239, 0.35);
+  box-shadow: 
+    0 12px 32px -8px rgba(0, 0, 0, 0.5),
+    0 0 16px 0 rgba(217, 70, 239, 0.08);
+}
+
+/* Delay classes for sequenced entrances */
+.delay-75 { animation-delay: 75ms; }
+.delay-100 { animation-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* Apple iOS Shimmer Skeleton */
+@keyframes iosShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.ios-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.ios-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.07), transparent);
+  animation: iosShimmer 1.8s infinite linear;
+}
+
+/* Apple iOS Indeterminate Progress Indicator (for real ML processing) */
+@keyframes iosIndeterminateProgress {
+  0% { transform: translateX(-100%) scaleX(0.2); }
+  50% { transform: translateX(20%) scaleX(0.5); }
+  100% { transform: translateX(100%) scaleX(0.2); }
+}
+
+.ios-progress-bar {
+  position: relative;
+  height: 4px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.ios-progress-bar-indicator {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, #10b981, #06b6d4, #6366f1);
+  border-radius: 9999px;
+  animation: iosIndeterminateProgress 1.4s infinite cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+/* Apple iOS Fade-and-Scale Entrance */
+@keyframes iosFadeScale {
+  0% { opacity: 0; transform: scale(0.985) translateY(4px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.animate-ios-fade-scale {
+  animation: iosFadeScale 0.28s var(--ios-spring) forwards;
+}
+
+/* Accessibility: Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
