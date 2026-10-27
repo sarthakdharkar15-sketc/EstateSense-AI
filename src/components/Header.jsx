@@ -175,8 +175,12 @@ export default function Header({ currentPage, setCurrentPage, onMenuOpen, curren
                     <div className="px-3 py-2">
                       <p className="text-xs font-bold text-white">{currentUser.name}</p>
                       <p className="text-[10px] text-slate-400 truncate mt-0.5">{currentUser.email}</p>
-                      <span className="inline-block mt-1.5 px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 text-[9px] font-bold uppercase tracking-wider border border-emerald-500/20">
-                        {currentUser.role || 'Member'}
+                      <span className={`inline-block mt-1.5 px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider border ${
+                        currentUser.role === 'Administrator'
+                          ? 'bg-indigo-500/15 text-indigo-300 border-indigo-500/30'
+                          : 'bg-emerald-500/15 text-emerald-400 border-emerald-500/20'
+                      }`}>
+                        {currentUser.role || 'User'}
                       </span>
                     </div>
                     

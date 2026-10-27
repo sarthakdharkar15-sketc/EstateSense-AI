@@ -100,6 +100,13 @@ export default function Sidebar({ currentPage, setCurrentPage, isOpen, onClose, 
             <div className="min-w-0 flex-1">
               <p className="text-xs font-bold text-slate-200 truncate">{currentUser.name}</p>
               <p className="text-[10px] text-slate-400 truncate">{currentUser.email}</p>
+              <span className={`inline-block mt-1 px-2 py-0.5 text-[8.5px] font-extrabold uppercase tracking-wider rounded-md border ${
+                currentUser.role === 'Administrator'
+                  ? 'bg-indigo-500/15 text-indigo-300 border-indigo-500/30'
+                  : 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30'
+              }`}>
+                {currentUser.role || 'User'}
+              </span>
             </div>
           </div>
           

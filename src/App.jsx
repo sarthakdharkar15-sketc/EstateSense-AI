@@ -19,6 +19,8 @@ import Research from './pages/Research';
 import AdminPanel from './pages/AdminPanel';
 import Compare from './pages/Compare';
 import SystemReport from './pages/SystemReport';
+import Login from './pages/Login';
+import AskEstateSense from './components/AskEstateSense';
 
 import './App.css';
 
@@ -26,17 +28,9 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState(() => {
     const savedUser = localStorage.getItem('house_predict_user');
     try {
-      return savedUser ? JSON.parse(savedUser) : {
-        name: 'Administrator',
-        email: 'admin@housepredict.ai',
-        role: 'Administrator'
-      };
+      return savedUser ? JSON.parse(savedUser) : null;
     } catch (e) {
-      return {
-        name: 'Administrator',
-        email: 'admin@housepredict.ai',
-        role: 'Administrator'
-      };
+      return null;
     }
   });
   const [currentPage, setCurrentPage] = useState('home');
@@ -90,14 +84,16 @@ export default function App() {
     setToast(prev => ({ ...prev, visible: false }));
   };
 
+  const handleLogin = (user) => {
+    localStorage.setItem('house_predict_user', JSON.stringify(user));
+    setCurrentUser(user);
+    setCurrentPage('home');
+  };
+
   const handleLogout = () => {
     localStorage.removeItem('house_predict_user');
-    setCurrentUser({
-      name: 'Administrator',
-      email: 'admin@housepredict.ai',
-      role: 'Administrator'
-    });
-    showToast('Session reset to default Administrator', 'info');
+    setCurrentUser(null);
+    showToast('Successfully signed out.', 'info');
   };
 
   // Dynamic Page Renderer
@@ -137,6 +133,23 @@ export default function App() {
     }
   };
 
+  // If no user is authenticated, render the dedicated User & Admin Login Portal
+  if (!currentUser) {
+    return (
+      <div className="min-h-screen bg-[#08080a] text-slate-100 relative">
+        <BackgroundAnimation />
+        <Login onLogin={handleLogin} triggerToast={showToast} />
+        {toast.visible && (
+          <Toast 
+            message={toast.message} 
+            type={toast.type} 
+            onClose={closeToast}
+          />
+        )}
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#08080a] text-slate-100 flex relative">
       <BackgroundAnimation />
@@ -171,6 +184,9 @@ export default function App() {
           <Footer setCurrentPage={setCurrentPage} uploadedDataset={uploadedDataset} />
         </main>
       </div>
+
+      {/* Floating AI Assistant Chat Bubble */}
+      <AskEstateSense lastPrediction={lastPrediction} />
 
       {/* Toast Notification Container */}
       {toast.visible && (

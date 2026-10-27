@@ -859,42 +859,47 @@ export const apiService = {
 
   // Simulate POST /api/auth/login
   login: async (email, password) => {
-    await delay(1000, true);
+    await delay(600, true);
     const users = JSON.parse(localStorage.getItem('house_predict_users') || '[]');
-    const demoUser = { email: 'demo@housepredict.ai', password: 'password123', name: 'Demo Admin', role: 'Administrator' };
-    const allUsers = [demoUser, ...users];
+    const defaultAccounts = [
+      { email: 'admin@estatesense.ai', password: 'admin123', name: 'System Administrator', role: 'Administrator' },
+      { email: 'user@estatesense.ai', password: 'user123', name: 'Rahul Sharma (Property Analyst)', role: 'User' },
+      { email: 'demo@housepredict.ai', password: 'password123', name: 'Demo Administrator', role: 'Administrator' }
+    ];
+    const allUsers = [...defaultAccounts, ...users];
     
-    const user = allUsers.find(u => u.email.toLowerCase() === email.toLowerCase());
+    const user = allUsers.find(u => u.email.toLowerCase() === email.trim().toLowerCase());
     if (!user) {
-      throw new Error('User not found. Try demo@housepredict.ai / password123 or sign up!');
+      throw new Error('User not found. Use Demo Quick Login or enter registered credentials.');
     }
     if (user.password !== password) {
-      throw new Error('Incorrect password. Please try again.');
+      throw new Error('Incorrect password. Please verify your credentials.');
     }
     
     return {
       name: user.name,
       email: user.email,
-      role: user.role || 'Member',
+      role: user.role || 'User',
       token: 'mock-jwt-token-' + Math.random().toString(36).substring(2)
     };
   },
 
   // Simulate POST /api/auth/register
-  register: async (name, email, password) => {
-    await delay(1200, true);
+  register: async (name, email, password, role = 'User') => {
+    await delay(800, true);
     if (!name || !email || !password) {
       throw new Error('All fields are required.');
     }
     if (password.length < 6) {
       throw new Error('Password must be at least 6 characters long.');
     }
+    const defaultEmails = ['admin@estatesense.ai', 'user@estatesense.ai', 'demo@housepredict.ai'];
     const users = JSON.parse(localStorage.getItem('house_predict_users') || '[]');
-    if (email.toLowerCase() === 'demo@housepredict.ai' || users.some(u => u.email.toLowerCase() === email.toLowerCase())) {
+    if (defaultEmails.includes(email.toLowerCase()) || users.some(u => u.email.toLowerCase() === email.toLowerCase())) {
       throw new Error('User with this email already exists.');
     }
     
-    const newUser = { name, email, password, role: 'Member' };
+    const newUser = { name, email, password, role: role || 'User' };
     users.push(newUser);
     localStorage.setItem('house_predict_users', JSON.stringify(users));
     
