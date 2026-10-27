@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { apiService } from '../services/api';
+import { analyticsService } from '../services/analyticsService';
 import { DATASET_FEATURES } from '../services/mockData';
 import { 
   Search, 
@@ -176,6 +177,13 @@ export default function Dataset({ uploadedDataset, setUploadedDataset }) {
 
       setUploadedData(rows);
       setUploadCurrentPage(1);
+
+      // Log dataset upload in real-time admin telemetry
+      try {
+        const savedUser = localStorage.getItem('house_predict_user');
+        const activeUser = savedUser ? JSON.parse(savedUser) : null;
+        analyticsService.logDatasetAction(activeUser, 'Custom Property CSV', rows.length, 'Uploaded & Parsed');
+      } catch (e) {}
     } catch (err) {
       setUploadError(err.message || "An error occurred while parsing the CSV file.");
     } finally {

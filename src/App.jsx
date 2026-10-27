@@ -21,6 +21,7 @@ import Compare from './pages/Compare';
 import SystemReport from './pages/SystemReport';
 import Login from './pages/Login';
 import AskEstateSense from './components/AskEstateSense';
+import { analyticsService } from './services/analyticsService';
 
 import './App.css';
 
@@ -87,10 +88,19 @@ export default function App() {
   const handleLogin = (user) => {
     localStorage.setItem('house_predict_user', JSON.stringify(user));
     setCurrentUser(user);
+    analyticsService.logLogin(user);
     setCurrentPage('home');
   };
 
   const handleLogout = () => {
+    if (currentUser) {
+      analyticsService.logEvent({
+        user: currentUser,
+        type: 'LOGIN',
+        action: 'User Session Ended',
+        details: 'User logged out securely'
+      });
+    }
     localStorage.removeItem('house_predict_user');
     setCurrentUser(null);
     showToast('Successfully signed out.', 'info');
@@ -125,7 +135,7 @@ export default function App() {
         return <SystemReport />;
       case 'admin':
         if (currentUser && currentUser.role === 'Administrator') {
-          return <AdminPanel uploadedDataset={uploadedDataset} />;
+          return <AdminPanel uploadedDataset={uploadedDataset} currentUser={currentUser} />;
         }
         return <Dashboard onNavigateToPredict={() => setCurrentPage('predict')} uploadedDataset={uploadedDataset} />;
       default:

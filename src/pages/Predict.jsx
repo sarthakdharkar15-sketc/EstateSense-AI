@@ -18,6 +18,7 @@ import {
 } from 'recharts';
 import { jsPDF } from 'jspdf';
 import AnimatedNumber from '../components/AnimatedNumber';
+import { analyticsService } from '../services/analyticsService';
 
 export default function Predict({ triggerToast, uploadedDataset, setUploadedDataset, onPredictionComplete, onNavigate }) {
   const dataset = Array.isArray(uploadedDataset) ? uploadedDataset : [];
@@ -580,6 +581,14 @@ export default function Predict({ triggerToast, uploadedDataset, setUploadedData
           distanceFromCenter: formData.distanceFromCenter
         });
       }
+
+      // Log prediction event for real-time admin telemetry
+      try {
+        const savedUser = localStorage.getItem('house_predict_user');
+        const activeUser = savedUser ? JSON.parse(savedUser) : null;
+        analyticsService.logPrediction(activeUser, formData.location, formData.bedrooms, formData.area, pred.final_prediction);
+      } catch (e) {}
+
       triggerToast(`Valuation computed for ${formData.location}: ₹${pred.final_prediction}L`, "success");
     } catch (err) {
       console.error(err);
@@ -703,6 +712,14 @@ export default function Predict({ triggerToast, uploadedDataset, setUploadedData
       doc.text(`Rs. ${result.final_prediction} Lakhs`, 20, 113);
 
       doc.save(`Valuation_Report_${formData.location}.pdf`);
+
+      // Log report download to telemetry
+      try {
+        const savedUser = localStorage.getItem('house_predict_user');
+        const activeUser = savedUser ? JSON.parse(savedUser) : null;
+        analyticsService.logReportDownload(activeUser, `Valuation Certificate PDF (${formData.location})`);
+      } catch (e) {}
+
       triggerToast("Valuation PDF downloaded successfully!", "success");
     } catch (err) {
       triggerToast("Failed to generate PDF.", "error");
