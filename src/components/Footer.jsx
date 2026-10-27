@@ -19,8 +19,8 @@ export default function Footer({ setCurrentPage, uploadedDataset }) {
 
   return (
     <footer className="w-full bg-[#08080a]/80 backdrop-blur-2xl border-t border-white/[0.08] text-slate-400 text-xs mt-auto">
-      <div className="max-w-7xl mx-auto px-6 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 mb-8 sm:mb-10">
           
           {/* Column 1: Brand & Tagline */}
           <div className="lg:col-span-2 space-y-4">

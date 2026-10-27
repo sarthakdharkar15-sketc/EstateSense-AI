@@ -499,10 +499,10 @@ export default function SystemReport() {
         }
       `}</style>
 
-      <div className="max-w-5xl mx-auto px-4 md:px-8 py-10 space-y-8 animate-page-transition" ref={reportRef}>
+      <div className="max-w-5xl mx-auto px-3 sm:px-6 md:px-8 py-6 sm:py-10 space-y-6 sm:space-y-8 animate-page-transition" ref={reportRef}>
 
         {/* ── Header ── */}
-        <div className="glass-panel report-header-card rounded-3xl p-6 md:p-10 border border-white/[0.08] relative overflow-hidden">
+        <div className="glass-panel report-header-card rounded-3xl p-4 sm:p-8 md:p-10 border border-white/[0.08] relative overflow-hidden">
           <div className="absolute top-0 right-0 w-72 h-72 bg-indigo-500/8 rounded-full blur-[80px] pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-72 h-72 bg-emerald-500/8 rounded-full blur-[80px] pointer-events-none" />
 

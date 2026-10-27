@@ -141,23 +141,23 @@ export default function AskEstateSense({ lastPrediction }) {
       <button
         onClick={() => setIsOpen(!isOpen)}
         title="Ask EstateSense AI Assistant"
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-slate-950/85 border border-white/[0.15] hover:border-emerald-400/80 shadow-2xl hover:shadow-emerald-500/25 transition-all duration-200 flex items-center justify-center group cursor-pointer backdrop-blur-2xl hover:scale-105 active:scale-95 ios-pressable"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-slate-950/90 border border-white/[0.15] hover:border-emerald-400/80 shadow-2xl hover:shadow-emerald-500/25 transition-all duration-200 flex items-center justify-center group cursor-pointer backdrop-blur-2xl hover:scale-105 active:scale-95 ios-pressable"
       >
         <span className="absolute inset-0 rounded-full bg-gradient-to-tr from-emerald-500/20 to-teal-500/10 pointer-events-none" />
         <img 
           src="/logo.png" 
           alt="Ask EstateSense AI" 
-          className="w-10 h-10 object-contain brightness-125 group-hover:scale-105 transition-transform duration-200 relative z-10" 
+          className="w-8 h-8 sm:w-10 sm:h-10 object-contain brightness-125 group-hover:scale-105 transition-transform duration-200 relative z-10" 
         />
         {/* Sparkling badge indicator */}
-        <span className="absolute -top-0.5 -right-0.5 w-4.5 h-4.5 rounded-full bg-emerald-500 border-2 border-slate-950 flex items-center justify-center text-white shadow-sm">
-          <Sparkles size={9} />
+        <span className="absolute -top-0.5 -right-0.5 w-4 h-4 sm:w-4.5 sm:h-4.5 rounded-full bg-emerald-500 border-2 border-slate-950 flex items-center justify-center text-white shadow-sm">
+          <Sparkles size={8} />
         </span>
       </button>
 
       {/* iOS Frosted Glass Sheet Chat Container */}
       {isOpen && (
-        <div className="fixed bottom-22 right-6 z-50 w-[350px] sm:w-[400px] h-[520px] rounded-3xl border border-white/[0.1] bg-[#0c0d12]/90 backdrop-blur-2xl shadow-2xl flex flex-col overflow-hidden animate-ios-fade-scale">
+        <div className="fixed bottom-18 right-2 sm:bottom-22 sm:right-6 z-50 w-[calc(100vw-1rem)] sm:w-[400px] max-w-[400px] h-[min(520px,calc(100vh-6rem))] rounded-3xl border border-white/[0.1] bg-[#0c0d12]/95 backdrop-blur-2xl shadow-2xl flex flex-col overflow-hidden animate-ios-fade-scale">
           
           {/* Header */}
           <div className="px-5 py-3.5 border-b border-white/[0.07] bg-white/[0.02] flex items-center justify-between">

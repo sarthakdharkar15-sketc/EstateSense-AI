@@ -41,21 +41,22 @@ export default function Sidebar({ currentPage, setCurrentPage, isOpen, onClose, 
   const sidebarContent = (
     <div className="flex flex-col h-full">
       {/* Brand Header */}
-      <div className="p-6 border-b border-white/5 flex items-center justify-between">
+      <div className="p-4 sm:p-5 border-b border-white/5 flex items-center justify-between gap-2">
         <div 
           onClick={() => handleNav('home')}
-          className="flex items-center gap-3 cursor-pointer hover:opacity-85 transition-opacity duration-200"
+          className="flex items-center gap-2.5 cursor-pointer hover:opacity-85 transition-opacity duration-200 min-w-0 flex-1"
         >
-          <img src="/logo.png" alt="EstateSense AI Logo" className="h-14 w-auto object-contain brightness-110" />
-          <div className="flex flex-col ml-1">
-            <h1 className="text-base font-extrabold text-slate-100 tracking-tight leading-none">EstateSense</h1>
-            <p className="text-[10px] text-indigo-400 font-extrabold tracking-widest uppercase mt-0.5">AI Platform</p>
+          <img src="/logo.png" alt="EstateSense AI Logo" className="h-8 w-auto object-contain brightness-110 shrink-0" />
+          <div className="flex flex-col min-w-0">
+            <h1 className="text-sm font-extrabold text-slate-100 tracking-tight leading-none truncate">EstateSense</h1>
+            <p className="text-[9px] text-emerald-400 font-extrabold tracking-widest uppercase mt-0.5 truncate">AI Platform</p>
           </div>
         </div>
         {onClose && (
           <button 
             onClick={onClose} 
-            className="md:hidden p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors cursor-pointer shrink-0"
+            aria-label="Close navigation drawer"
           >
             <X size={18} />
           </button>
@@ -123,18 +124,21 @@ export default function Sidebar({ currentPage, setCurrentPage, isOpen, onClose, 
 
   return (
     <>
-      {/* Mobile Drawer Backdrop */}
+      {/* Mobile & Tablet Drawer Backdrop */}
       {isOpen && (
         <div 
-          className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm md:hidden"
+          className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm lg:hidden transition-opacity"
           onClick={onClose}
+          aria-hidden="true"
         />
       )}
 
-      {/* Mobile Drawer Sidebar */}
+      {/* Mobile & Tablet Drawer Sidebar */}
       <aside 
-        className={`fixed inset-y-0 left-0 z-40 w-64 bg-slate-950/95 backdrop-blur-xl border-r border-white/5 transition-transform duration-300 transform md:hidden ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
+        className={`fixed inset-y-0 left-0 z-50 w-72 max-w-[85vw] bg-slate-950/95 backdrop-blur-2xl border-r border-white/10 shadow-2xl transition-all duration-300 ease-out overflow-hidden lg:hidden ${
+          isOpen 
+            ? 'translate-x-0 opacity-100 visible pointer-events-auto' 
+            : '-translate-x-full opacity-0 invisible pointer-events-none'
         }`}
       >
         {sidebarContent}

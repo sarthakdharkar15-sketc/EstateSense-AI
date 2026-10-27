@@ -320,7 +320,7 @@ export default function Dataset({ uploadedDataset, setUploadedDataset }) {
 
 
   return (
-    <div className="p-6 space-y-10">
+    <div className="p-3.5 sm:p-5 md:p-6 space-y-6 sm:space-y-10">
       
       {/* Title */}
       <div className="flex flex-col">
@@ -373,7 +373,7 @@ export default function Dataset({ uploadedDataset, setUploadedDataset }) {
               Only CSV files (.csv) are supported. Headers must contain property features like <code className="text-indigo-400 font-mono">area</code> and <code className="text-indigo-400 font-mono">location</code>.
             </p>
 
-            <div className="flex items-center gap-3 mt-6">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6 w-full sm:w-auto">
               <label className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-indigo-600/25 hover:shadow-indigo-500/35 transition-all cursor-pointer flex items-center gap-1.5">
                 <Search size={13} />
                 Browse File

@@ -124,7 +124,7 @@ export default function Dashboard({ onNavigateToPredict, uploadedDataset }) {
   }
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-3.5 sm:p-5 md:p-6 space-y-4 sm:space-y-6">
       {/* Dashboard Intro Header */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <div>
@@ -205,7 +205,7 @@ export default function Dashboard({ onNavigateToPredict, uploadedDataset }) {
         };
 
         return (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
             {/* KPI 1 */}
             <div className="glass-panel p-5 rounded-xl border border-white/5 relative overflow-hidden group">
               <div className="flex items-center justify-between">

@@ -33,7 +33,7 @@ export default function Experiments() {
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-3.5 sm:p-5 md:p-6 space-y-4 sm:space-y-6">
       
       <div className="flex flex-col">
         <h2 className="text-2xl font-bold text-white tracking-tight">Research Experiments</h2>

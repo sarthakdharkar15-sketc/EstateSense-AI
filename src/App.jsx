@@ -48,6 +48,7 @@ export default function App() {
 
   // Smoothly reset scroll position to top when navigating to another module
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     if (mainScrollRef.current) {
       mainScrollRef.current.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -163,7 +164,7 @@ export default function App() {
         />
 
         {/* Dynamic Page Content with smooth scroll and transition */}
-        <main ref={mainScrollRef} className="flex-1 overflow-y-auto scroll-smooth bg-slate-950/10 flex flex-col justify-between">
+        <main ref={mainScrollRef} className="flex-1 w-full bg-slate-950/10 flex flex-col justify-between">
           <div key={currentPage} className="w-full animate-page-transition pb-8">
             {renderPage()}
           </div>

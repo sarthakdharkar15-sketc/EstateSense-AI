@@ -68,17 +68,17 @@ export default function PriceGravityMap({ locations = [], overallAvgRate = 0, se
   const activeTooltip = hoveredLocation || locations.find(l => l.name === selectedLocation);
 
   return (
-    <div className="relative w-full h-[450px] md:h-[520px] rounded-3xl bg-slate-950 border border-white/10 overflow-hidden shadow-2xl flex flex-col justify-between group">
+    <div className="relative w-full h-[360px] sm:h-[450px] md:h-[520px] rounded-3xl bg-slate-950 border border-white/10 overflow-hidden shadow-2xl flex flex-col justify-between group">
       
       {/* Map Header & Controls Bar */}
-      <div className="absolute top-4 left-4 right-4 z-20 flex justify-between items-center pointer-events-none">
-        <div className="bg-slate-900/90 border border-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md flex items-center gap-2 pointer-events-auto">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-[11px] font-bold text-slate-200 uppercase tracking-wider">
-            {hasCoordinates ? "GPS Coordinate Plot" : "Dynamic Spatial Topology Map"}
+      <div className="absolute top-3 sm:top-4 left-3 sm:left-4 right-3 sm:right-4 z-20 flex justify-between items-center pointer-events-none">
+        <div className="bg-slate-900/90 border border-white/10 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full backdrop-blur-md flex items-center gap-1.5 sm:gap-2 pointer-events-auto max-w-[calc(100%-1rem)]">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+          <span className="text-[10px] sm:text-[11px] font-bold text-slate-200 uppercase tracking-wider truncate">
+            {hasCoordinates ? "GPS Coordinate Plot" : "Dynamic Spatial Map"}
           </span>
-          <span className="text-[10px] text-slate-400 border-l border-white/10 pl-2 font-mono">
-            {locations.length} Dataset Zones
+          <span className="text-[9px] sm:text-[10px] text-slate-400 border-l border-white/10 pl-2 font-mono shrink-0">
+            {locations.length} Zones
           </span>
         </div>
 

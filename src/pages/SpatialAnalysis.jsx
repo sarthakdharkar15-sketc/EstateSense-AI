@@ -230,7 +230,7 @@ export default function SpatialAnalysis({ uploadedDataset }) {
   }, [properties]);
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-3.5 sm:p-5 md:p-6 space-y-4 sm:space-y-6">
       <div className="flex flex-col">
         <h2 className="text-2xl font-bold text-white tracking-tight">Spatial Intelligence</h2>
         <p className="text-slate-400 text-sm mt-1">
@@ -325,7 +325,7 @@ export default function SpatialAnalysis({ uploadedDataset }) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         
         {/* Leaflet Map Panel (8 cols) */}
-        <div className="lg:col-span-8 glass-panel p-2 rounded-xl border border-white/5 h-[450px] relative">
+        <div className="lg:col-span-8 glass-panel p-2 rounded-xl border border-white/5 h-[340px] sm:h-[450px] relative">
           {loading && (
             <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center rounded-xl">
               <div className="flex flex-col items-center gap-2">
@@ -343,7 +343,7 @@ export default function SpatialAnalysis({ uploadedDataset }) {
           >
             <ChangeView center={mapCenter} />
             {/* Price Gravity Map Header Overlay */}
-            <div className="absolute top-4 left-4 z-[400] bg-slate-950/85 border border-white/10 rounded-xl p-3 backdrop-blur-md space-y-1 font-mono">
+            <div className="absolute top-2 sm:top-4 left-2 sm:left-4 z-[400] bg-slate-950/90 border border-white/10 rounded-xl p-2.5 sm:p-3 backdrop-blur-md space-y-1 font-mono max-w-[calc(100%-1rem)] sm:max-w-sm">
               <div className="flex items-center gap-2">
                 <Compass className="text-indigo-400 animate-spin-slow" size={15} />
                 <span className="text-xs font-bold text-white uppercase tracking-wider">PRICE GRAVITY MAP</span>

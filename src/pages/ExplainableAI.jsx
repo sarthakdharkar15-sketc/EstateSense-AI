@@ -56,7 +56,7 @@ export default function ExplainableAI() {
   const [explainMode, setExplainMode] = useState('technical'); // 'technical' | 'simple' | 'eli5'
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-3.5 sm:p-5 md:p-6 space-y-4 sm:space-y-6">
       
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/5 pb-4">
         <div className="flex flex-col">
@@ -67,7 +67,7 @@ export default function ExplainableAI() {
         </div>
 
         {/* Explanation Mode Toggle Switch */}
-        <div className="flex items-center gap-1.5 p-1 bg-slate-900 border border-white/10 rounded-xl shrink-0">
+        <div className="flex flex-wrap items-center gap-1 sm:gap-1.5 p-1 bg-slate-900 border border-white/10 rounded-xl">
           {[
             { id: 'technical', label: 'Technical' },
             { id: 'simple', label: 'Simple' },

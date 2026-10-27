@@ -26,7 +26,10 @@ import {
   Database,
   Brain,
   Eye,
-  Check
+  Check,
+  Play,
+  Pause,
+  RotateCcw
 } from 'lucide-react';
 
 // Live AI Insight Ticker Content
@@ -282,7 +285,7 @@ export default function Home({ onStartPredicting, onNavigate = () => {}, aiMode 
   };
 
   return (
-    <div className="space-y-16 w-full select-none pb-12">
+    <div className="space-y-16 w-full pb-12">
       
       {/* REQUIREMENT 7: LIVE AI INSIGHT TICKER */}
       <section className="w-full bg-slate-950/90 border-b border-white/5 py-2.5 px-4 overflow-hidden backdrop-blur-md">
@@ -302,40 +305,40 @@ export default function Home({ onStartPredicting, onNavigate = () => {}, aiMode 
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-6 space-y-20">
+      <div className="max-w-7xl mx-auto px-3.5 sm:px-6 space-y-12 sm:space-y-16 md:space-y-20">
         
         {/* REQUIREMENT 1 & 2: HERO SECTION WITH ANIMATED SPATIAL BACKGROUND & FLOATING VALUATION CARD */}
-        <section className="relative glass-panel rounded-3xl border border-white/5 bg-slate-950/40 p-6 md:p-12 overflow-hidden shadow-2xl">
+        <section className="relative glass-panel rounded-3xl border border-white/5 bg-slate-950/40 p-4 sm:p-8 md:p-12 overflow-hidden shadow-2xl">
           <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
           
           {/* Spatial Canvas Background */}
           <canvas ref={heroCanvasRef} className="absolute inset-0 z-0 pointer-events-none opacity-35" />
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
             
             {/* Hero Left Column: Headlines & Subtitle */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-4 sm:space-y-6">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-bold uppercase tracking-wider">
                 <Brain size={13} className="text-emerald-400 animate-pulse" />
                 <span>Spatial Intelligence & Explainable AI</span>
               </div>
 
               {/* Requirement 1 Headline */}
-              <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent leading-tight">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent leading-tight">
                 Predict the Price. Understand the Value.
               </h1>
 
               {/* Requirement 1 Subtitle */}
-              <p className="text-slate-300 text-sm md:text-base leading-relaxed font-normal max-w-xl">
+              <p className="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed font-normal max-w-xl">
                 AI-powered property valuation using Hybrid Machine Learning, Spatial Intelligence and Explainable AI.
               </p>
 
               {/* Apple iOS Capsule Action Buttons */}
-              <div className="flex flex-wrap gap-3.5 pt-2">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-3.5 pt-2">
                 <button
                   onClick={onStartPredicting}
-                  className="px-6 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-semibold text-xs rounded-full shadow-lg shadow-emerald-950/40 transition-all flex items-center gap-2 cursor-pointer ios-pressable"
+                  className="px-6 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-semibold text-xs rounded-full shadow-lg shadow-emerald-950/40 transition-all flex items-center justify-center gap-2 cursor-pointer ios-pressable w-full sm:w-auto"
                 >
                   <Zap size={14} className="text-white" />
                   <span>Predict Property Value</span>
@@ -344,7 +347,7 @@ export default function Home({ onStartPredicting, onNavigate = () => {}, aiMode 
 
                 <a
                   href="#how-estatesense-thinks"
-                  className="px-6 py-3.5 bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.1] text-slate-200 font-semibold text-xs rounded-full transition-all flex items-center justify-center gap-1.5 cursor-pointer ios-pressable"
+                  className="px-6 py-3.5 bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.1] text-slate-200 font-semibold text-xs rounded-full transition-all flex items-center justify-center gap-1.5 cursor-pointer ios-pressable w-full sm:w-auto text-center"
                 >
                   <Compass size={14} className="text-emerald-400" />
                   <span>Explore How It Works</span>
@@ -428,45 +431,8 @@ export default function Home({ onStartPredicting, onNavigate = () => {}, aiMode 
         {/* PROPERTY PRICE INSIGHTS SECTION */}
         <PropertyPriceInsights uploadedDataset={uploadedDataset} />
 
-        {/* REQUIREMENT 4: HOW ESTATESENSE THINKS (PIPELINE WITH ANIMATED PARTICLES) */}
-        <section id="how-estatesense-thinks" className="space-y-8 pt-4 border-t border-white/5">
-          <div className="text-center max-w-2xl mx-auto space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-bold uppercase">
-              <Brain size={13} />
-              <span>Valuation Pipeline</span>
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">How EstateSense Thinks</h2>
-            <p className="text-xs text-slate-400 font-light">
-              Sequential flow of parameters from raw inputs to explainable hybrid valuation.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-7 gap-3 items-center text-center font-mono text-xs">
-            {[
-              { title: "Property Data", desc: "Raw specs & coordinates" },
-              { title: "Hedonic Regression", desc: "OLS prior base rate" },
-              { title: "Residual Learning", desc: "Error difference vector" },
-              { title: "XGBoost", desc: "Gradient boosting trees" },
-              { title: "Hybrid Prediction", desc: "Summation pipeline" },
-              { title: "SHAP Explainability", desc: "Feature contributions" },
-              { title: "Final Valuation", desc: "Final estimate & bounds" }
-            ].map((node, idx) => (
-              <React.Fragment key={node.title}>
-                <div className="glass-panel p-4 rounded-2xl border border-white/10 bg-slate-950/60 hover:border-indigo-500/40 transition-all flex flex-col justify-between h-32 group">
-                  <div className="text-[10px] text-indigo-400 font-bold">0{idx + 1}</div>
-                  <div className="font-bold text-slate-100 text-xs group-hover:text-emerald-400 transition-colors">{node.title}</div>
-                  <div className="text-[9px] text-slate-500 font-sans">{node.desc}</div>
-                </div>
-
-                {idx < 6 && (
-                  <div className="hidden md:flex justify-center text-indigo-400 animate-pulse">
-                    <ArrowRight size={16} />
-                  </div>
-                )}
-              </React.Fragment>
-            ))}
-          </div>
-        </section>
+        {/* REQUIREMENT 4: HOW ESTATESENSE THINKS (PIPELINE WITH ANIMATED PARTICLES & DATA FLOW) */}
+        <HowEstateSenseThinksPipeline onStartPredicting={onStartPredicting} />
 
         {/* REQUIREMENT 9: HOMEPAGE UNIQUE FEATURE SHOWCASE ("More Than a Price Prediction") */}
         <section className="space-y-8 pt-4 border-t border-white/5">
@@ -901,4 +867,287 @@ function PropertyScanner({ aiMode }) {
     </section>
   );
 }
+
+// Interactive Animated Valuation Pipeline Component (Requirement 4)
+function HowEstateSenseThinksPipeline({ onStartPredicting }) {
+  const [activeStep, setActiveStep] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const PIPELINE_STEPS = [
+    {
+      step: "01",
+      title: "Property Data",
+      desc: "Raw specs & coordinates",
+      tag: "Input Vector",
+      icon: Database,
+      formula: "X = [Area, BHK, Baths, Age, Lat, Lng, Floors]",
+      sample: "1,850 sq.ft • 3 BHK • Indiranagar • Age: 4 yrs",
+      note: "Validates input boundaries, geocodes coordinates, and normalizes numeric ranges."
+    },
+    {
+      step: "02",
+      title: "Hedonic Regression",
+      desc: "OLS prior base rate",
+      tag: "Stage 1 Baseline",
+      icon: TrendingUp,
+      formula: "P_linear = β₀ + Σ(βᵢ·Xᵢ) + (Area × BaseRate_loc)",
+      sample: "OLS Baseline Price: ₹115.5 Lakhs (Indiranagar Base Rate)",
+      note: "Computes fundamental macroeconomic floor price based on historical neighborhood base rates."
+    },
+    {
+      step: "03",
+      title: "Residual Learning",
+      desc: "Error difference vector",
+      tag: "Variance Extractor",
+      icon: Activity,
+      formula: "Residual = Actual_Price - P_linear",
+      sample: "Target Variance to Correct: +₹18.2 Lakhs",
+      note: "Extracts non-linear variance and neighborhood premium that linear regression misses."
+    },
+    {
+      step: "04",
+      title: "XGBoost",
+      desc: "Gradient boosting trees",
+      tag: "Stage 2 Non-Linear",
+      icon: Cpu,
+      formula: "Res_pred = XGBoost(Spatial, Amenities, MicroLoc)",
+      sample: "Boosted Tree Correction: +₹18.2 Lakhs (100 Estimators)",
+      note: "Captures micro-location gravity, floor height premiums, and structural cross-interactions."
+    },
+    {
+      step: "05",
+      title: "Hybrid Prediction",
+      desc: "Summation pipeline",
+      tag: "Ensemble Merge",
+      icon: Scale,
+      formula: "P_final = P_linear + Res_pred  (R² = 0.932)",
+      sample: "Synthesized Price: ₹133.7 Lakhs (Error: ±6.8%)",
+      note: "Combines linear macro stability with gradient-boosted micro accuracy."
+    },
+    {
+      step: "06",
+      title: "SHAP Explainability",
+      desc: "Feature contributions",
+      tag: "Explainable AI",
+      icon: Eye,
+      formula: "P_final = E[P] + Σ φⱼ  (Shapley Marginal Values)",
+      sample: "Indiranagar (+₹14.2L) • Area (+₹42.5L) • Age > 4 (-₹4.8L)",
+      note: "Decomposes every rupee of price change into positive premiums and negative deductions."
+    },
+    {
+      step: "07",
+      title: "Final Valuation",
+      desc: "Final estimate & bounds",
+      tag: "Output Certificate",
+      icon: CheckCircle2,
+      formula: "95% Confidence Band = [₹124.6L – ₹142.8L]",
+      sample: "Fair Market Value: ₹133.7 Lakhs",
+      note: "Renders interactive valuation cards, SHAP waterfall chart, GIS map scatter, and official PDF."
+    }
+  ];
+
+  // Auto-cycle through the 7 steps
+  useEffect(() => {
+    if (!isPlaying) return;
+    const interval = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % PIPELINE_STEPS.length);
+    }, 2200);
+    return () => clearInterval(interval);
+  }, [isPlaying, PIPELINE_STEPS.length]);
+
+  const current = PIPELINE_STEPS[activeStep];
+
+  return (
+    <section id="how-estatesense-thinks" className="space-y-6 pt-4 border-t border-white/5">
+      {/* Section Header with Controls */}
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="space-y-1.5 text-center md:text-left">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            <Brain size={13} className="animate-pulse" />
+            <span>Dual-Stage Valuation Pipeline</span>
+          </div>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+            How EstateSense Thinks
+          </h2>
+          <p className="text-xs text-slate-400 font-light max-w-xl">
+            Live sequential data pipeline illustrating how property parameters transform into explainable valuations.
+          </p>
+        </div>
+
+        {/* Interactive Play/Pause & Reset Controls */}
+        <div className="flex items-center gap-2 bg-slate-900/80 border border-white/10 rounded-xl p-1.5 backdrop-blur-sm">
+          <button
+            onClick={() => setIsPlaying(!isPlaying)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 text-xs font-semibold transition-all"
+            title={isPlaying ? "Pause automated flow" : "Resume automated flow"}
+          >
+            {isPlaying ? <Pause size={13} /> : <Play size={13} />}
+            <span>{isPlaying ? "Pause Flow" : "Auto-Play"}</span>
+          </button>
+          
+          <button
+            onClick={() => {
+              setActiveStep(0);
+              setIsPlaying(true);
+            }}
+            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
+            title="Restart pipeline from Step 01"
+          >
+            <RotateCcw size={13} />
+          </button>
+          
+          <span className="text-[10px] font-mono text-slate-500 px-2 border-l border-white/10">
+            Step {activeStep + 1}/7
+          </span>
+        </div>
+      </div>
+
+      {/* Progress Track with Animated Neon Laser Beam */}
+      <div className="relative w-full h-1.5 bg-slate-900 rounded-full overflow-hidden border border-white/5">
+        <div
+          className="h-full bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-400 transition-all duration-700 ease-out rounded-full shadow-[0_0_12px_#10b981]"
+          style={{ width: `${((activeStep + 1) / 7) * 100}%` }}
+        />
+      </div>
+
+      {/* 7 Pipeline Cards in an Aligned Responsive Layout */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5">
+        {PIPELINE_STEPS.map((node, idx) => {
+          const isActive = activeStep === idx;
+          const isPassed = activeStep > idx;
+          const IconComponent = node.icon;
+
+          return (
+            <div
+              key={node.step}
+              onClick={() => {
+                setActiveStep(idx);
+                setIsPlaying(false); // Pause so user can inspect
+              }}
+              className={`relative rounded-2xl p-3 sm:p-3.5 flex flex-col justify-between cursor-pointer transition-all duration-300 min-h-[140px] sm:min-h-[148px] border text-left group ${idx === 6 ? 'col-span-2 sm:col-span-1' : ''} ${
+                isActive
+                  ? 'bg-gradient-to-b from-emerald-500/15 via-slate-900/90 to-slate-950 border-emerald-500/80 shadow-xl shadow-emerald-500/20 -translate-y-1.5 ring-1 ring-emerald-500/50'
+                  : isPassed
+                  ? 'bg-slate-950/60 border-emerald-500/30 hover:border-emerald-500/60 hover:-translate-y-1'
+                  : 'bg-slate-950/40 border-white/5 hover:border-white/20 hover:-translate-y-0.5 opacity-70 hover:opacity-100'
+              }`}
+            >
+              {/* Top Row: Step Number & Live Status Badge */}
+              <div className="flex items-center justify-between">
+                <span className={`text-[11px] font-mono font-extrabold ${isActive ? 'text-emerald-400' : isPassed ? 'text-emerald-500/80' : 'text-slate-500'}`}>
+                  {node.step}
+                </span>
+
+                {isActive ? (
+                  <span className="flex items-center gap-1 text-[9px] font-bold text-emerald-400 uppercase tracking-wider bg-emerald-500/10 px-1.5 py-0.5 rounded-full border border-emerald-500/30">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                    </span>
+                    Live
+                  </span>
+                ) : isPassed ? (
+                  <span className="flex items-center text-emerald-400 text-[10px]" title="Passed step">
+                    <Check size={12} />
+                  </span>
+                ) : (
+                  <span className="text-[9px] text-slate-600 font-mono">Queue</span>
+                )}
+              </div>
+
+              {/* Icon Container */}
+              <div className="my-1.5 flex items-center gap-2">
+                <div className={`w-8 h-8 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 ${
+                  isActive
+                    ? 'bg-emerald-500/20 text-emerald-300 shadow-lg shadow-emerald-500/30'
+                    : isPassed
+                    ? 'bg-emerald-500/10 text-emerald-400'
+                    : 'bg-white/5 text-slate-400'
+                }`}>
+                  <IconComponent size={15} />
+                </div>
+              </div>
+
+              {/* Title & Description */}
+              <div className="space-y-0.5">
+                <div className={`font-bold text-xs tracking-tight transition-colors ${
+                  isActive ? 'text-white' : 'text-slate-200 group-hover:text-emerald-400'
+                }`}>
+                  {node.title}
+                </div>
+                <div className="text-[9px] text-slate-400 line-clamp-1 font-light">
+                  {node.desc}
+                </div>
+              </div>
+
+              {/* Bottom Tag Badge */}
+              <div className="mt-2 pt-2 border-t border-white/5 flex items-center justify-between">
+                <span className={`text-[8.5px] font-mono px-1.5 py-0.5 rounded-md ${
+                  isActive
+                    ? 'bg-emerald-400/20 text-emerald-300 font-semibold'
+                    : 'bg-white/5 text-slate-500'
+                }`}>
+                  {node.tag}
+                </span>
+
+                {idx < 6 && (
+                  <span className={`text-[10px] transition-colors ${isActive ? 'text-emerald-400 animate-pulse' : 'text-slate-600'}`}>
+                    →
+                  </span>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Live Pipeline Monitor Console (Shows math & sample data for active step) */}
+      <div className="p-4 md:p-5 rounded-2xl bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950/40 border border-emerald-500/20 shadow-2xl relative overflow-hidden">
+        {/* Subtle decorative glow */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
+          {/* Active Step Details */}
+          <div className="space-y-1.5 max-w-2xl">
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-mono font-bold text-emerald-400 uppercase tracking-widest px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20">
+                ACTIVE STEP {current.step} / 07
+              </span>
+              <span className="text-xs font-semibold text-slate-300">
+                {current.title} — <span className="text-slate-400">{current.tag}</span>
+              </span>
+            </div>
+
+            <p className="text-xs text-slate-300 font-light">
+              {current.note}
+            </p>
+
+            <div className="font-mono text-[10px] sm:text-[11px] text-emerald-300/90 bg-black/40 px-2.5 sm:px-3 py-1.5 rounded-lg border border-white/5 inline-block max-w-full overflow-x-auto whitespace-nowrap scrollbar-none">
+              <span className="text-slate-500 select-none">$ </span>
+              {current.formula}
+            </div>
+          </div>
+
+          {/* Sample Property Transformation */}
+          <div className="md:text-right space-y-1 border-t md:border-t-0 md:border-l border-white/10 pt-3 md:pt-0 md:pl-5 min-w-[240px]">
+            <div className="text-[10px] text-slate-500 uppercase font-mono tracking-wider">
+              Live Property Vector Trace
+            </div>
+            <div className="text-xs font-bold text-white">
+              {current.sample}
+            </div>
+            <button
+              onClick={onStartPredicting}
+              className="inline-flex items-center gap-1.5 text-[11px] text-emerald-400 hover:text-emerald-300 font-semibold mt-1 transition-colors group"
+            >
+              <span>Test Live in Predictor</span>
+              <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 

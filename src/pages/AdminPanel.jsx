@@ -173,7 +173,7 @@ export default function AdminPanel({ uploadedDataset }) {
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-3.5 sm:p-5 md:p-6 space-y-4 sm:space-y-6">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h2 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
@@ -187,7 +187,7 @@ export default function AdminPanel({ uploadedDataset }) {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-white/5 space-x-6 text-sm">
+      <div className="flex border-b border-white/5 gap-2 sm:gap-6 text-xs sm:text-sm overflow-x-auto whitespace-nowrap scrollbar-none pb-0.5">
         <button
           onClick={() => setActiveTab('settings')}
           className={`pb-3 font-semibold transition-colors flex items-center gap-2 ${

@@ -710,7 +710,7 @@ export default function Predict({ triggerToast, uploadedDataset, setUploadedData
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-3.5 sm:p-5 md:p-6 space-y-4 sm:space-y-6">
       
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/5 pb-4">
@@ -770,7 +770,7 @@ export default function Predict({ triggerToast, uploadedDataset, setUploadedData
       </div>
 
       {/* CSV Dataset Upload & Model Training Card */}
-      <div className="glass-panel p-5 rounded-2xl border border-white/5 bg-slate-950/30 space-y-4">
+      <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-white/5 bg-slate-950/30 space-y-3.5 sm:space-y-4">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1">
             <h3 className="text-sm font-bold text-slate-200 flex items-center gap-2">
@@ -864,7 +864,7 @@ export default function Predict({ triggerToast, uploadedDataset, setUploadedData
         <div className="space-y-6 animate-fade-in">
           
           {/* Location Selector & Optional Filter Controls Card */}
-          <div className="glass-panel p-6 rounded-2xl border border-white/5 bg-slate-950/30 space-y-5">
+          <div className="glass-panel p-4 sm:p-6 rounded-2xl border border-white/5 bg-slate-950/30 space-y-4 sm:space-y-5">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-white/5 pb-4">
               <div className="space-y-1">
                 <span className="text-[10px] text-emerald-400 font-extrabold uppercase tracking-widest flex items-center gap-1.5">
@@ -1292,7 +1292,7 @@ export default function Predict({ triggerToast, uploadedDataset, setUploadedData
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start animate-fade-in">
           
           {/* Left Column: Form */}
-          <form onSubmit={handlePredictSingle} className="lg:col-span-7 space-y-5 glass-panel p-6 rounded-2xl border border-white/5 bg-slate-950/20 shadow-xl">
+          <form onSubmit={handlePredictSingle} className="lg:col-span-7 space-y-4 sm:space-y-5 glass-panel p-4 sm:p-6 rounded-2xl border border-white/5 bg-slate-950/20 shadow-xl">
             {formError && (
               <div className="p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-start gap-2">
                 <AlertTriangle size={16} className="text-rose-400 shrink-0 mt-0.5" />
@@ -1499,7 +1499,7 @@ export default function Predict({ triggerToast, uploadedDataset, setUploadedData
 
             {/* Results Card */}
             {result && !loading && (
-              <div className="glass-panel p-6 rounded-2xl border border-white/5 bg-slate-950/30 space-y-5 animate-ios-fade-scale shadow-2xl">
+              <div className="glass-panel p-4 sm:p-6 rounded-2xl border border-white/5 bg-slate-950/30 space-y-4 sm:space-y-5 animate-ios-fade-scale shadow-2xl">
                 <div>
                   <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest block">Estimated Property Value</span>
                   <h3 className="text-3xl font-extrabold text-white tracking-tight mt-1">
@@ -1564,8 +1564,8 @@ export default function Predict({ triggerToast, uploadedDataset, setUploadedData
 
       {/* Manual Column Mapping Modal */}
       {showMappingModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 animate-fade-in">
-          <div className="glass-panel w-full max-w-xl border border-white/10 bg-slate-950 rounded-2xl p-6 shadow-2xl space-y-5">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-3 sm:p-4 animate-fade-in">
+          <div className="glass-panel w-full max-w-xl border border-white/10 bg-slate-950 rounded-2xl p-4 sm:p-6 shadow-2xl space-y-4 sm:space-y-5 max-h-[92vh] overflow-y-auto">
             <div className="flex items-center justify-between border-b border-white/5 pb-3">
               <div className="flex items-center gap-2">
                 <Settings2 className="text-indigo-400" size={18} />

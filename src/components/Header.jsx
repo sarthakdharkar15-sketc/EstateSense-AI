@@ -58,26 +58,27 @@ export default function Header({ currentPage, setCurrentPage, onMenuOpen, curren
   const isDropdownActive = DROPDOWN_ITEMS.some(item => item.id === currentPage);
 
   return (
-    <header className="sticky top-0 z-20 w-full bg-[#08080a]/80 backdrop-blur-2xl border-b border-white/[0.08] px-6 py-2.5 transition-colors">
-      <div className="w-full flex items-center justify-between gap-6">
+    <header className="sticky top-0 z-20 w-full bg-[#08080a]/80 backdrop-blur-2xl border-b border-white/[0.08] px-3.5 sm:px-6 py-2 sm:py-2.5 transition-colors">
+      <div className="w-full flex items-center justify-between gap-2 sm:gap-6">
         {/* Left-aligned brand container */}
-        <div className="flex items-center gap-3.5 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3.5 shrink-0">
           <button
             onClick={onMenuOpen}
-            className="lg:hidden p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 transition-all focus:outline-none ios-pressable"
+            className="lg:hidden p-2 -ml-1 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 transition-all focus:outline-none ios-pressable cursor-pointer active:scale-95"
+            aria-label="Open navigation menu"
           >
-            <Menu size={18} />
+            <Menu size={20} />
           </button>
 
           {/* Brand Logo & Name */}
           <div 
             onClick={() => setCurrentPage('home')}
-            className="flex items-center gap-2.5 cursor-pointer hover:opacity-90 transition-opacity ios-pressable"
+            className="flex items-center gap-1.5 sm:gap-2.5 cursor-pointer hover:opacity-90 transition-opacity ios-pressable"
           >
-            <img src="/logo.png" alt="EstateSense AI Logo" className="h-9 md:h-10 w-auto object-contain brightness-110" />
+            <img src="/logo.png" alt="EstateSense AI Logo" className="h-7 sm:h-8 md:h-9 w-auto object-contain brightness-110 shrink-0" />
             <div className="flex flex-col">
-              <h1 className="text-base md:text-lg font-bold text-white tracking-tight leading-none">EstateSense</h1>
-              <p className="text-[9px] text-emerald-400 font-bold tracking-widest uppercase mt-0.5">AI Engine</p>
+              <h1 className="text-xs sm:text-sm md:text-base font-bold text-white tracking-tight leading-none">EstateSense</h1>
+              <p className="text-[7.5px] sm:text-[9px] text-emerald-400 font-bold tracking-widest uppercase mt-0.5">AI Engine</p>
             </div>
           </div>
         </div>
