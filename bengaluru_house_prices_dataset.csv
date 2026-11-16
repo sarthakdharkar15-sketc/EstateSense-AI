@@ -1,0 +1,91 @@
+id,locality,built_up_area_sqft,bedrooms_bhk,bathrooms,property_type,furnishing_status,property_age_years,parking_spaces,distance_from_cbd_km,latitude,longitude,hedonic_base_price_lakhs,xgboost_residual_lakhs,final_price_lakhs
+1,"Indiranagar",2106,4,3,"Apartment","Unfurnished",3,0,5.77,12.98539,77.63965,196.92,0.86,197.78
+2,"Indiranagar",1747,2,2,"Villa","Fully-Furnished",19,0,4.72,12.98298,77.64655,161.05,-1.51,159.54
+3,"Indiranagar",3131,4,3,"Penthouse","Semi-Furnished",9,2,4.69,12.97529,77.64373,301.21,1.99,303.2
+4,"Indiranagar",970,1,1,"Villa","Semi-Furnished",5,0,5.4,12.974,77.63502,95.59,-0.78,94.81
+5,"Indiranagar",1764,3,3,"Apartment","Unfurnished",15,1,5.49,12.98527,77.64184,154,-0.33,153.67
+6,"Indiranagar",3137,4,3,"Independent House","Unfurnished",2,0,5.62,12.98083,77.63966,285.49,8.28,293.77
+7,"Indiranagar",1533,2,2,"Apartment","Semi-Furnished",10,1,4.79,12.97196,77.64071,134.99,1.58,136.57
+8,"Indiranagar",3237,3,3,"Apartment","Fully-Furnished",7,0,6.04,12.98071,77.64456,291.11,-1.47,289.64
+9,"Indiranagar",4066,3,3,"Penthouse","Semi-Furnished",18,1,4.67,12.97901,77.64427,369.01,1.05,370.06
+10,"Indiranagar",2828,4,4,"Penthouse","Unfurnished",4,0,4.63,12.97542,77.6372,279.01,5.07,284.08
+11,"Indiranagar",1401,1,1,"Villa","Fully-Furnished",8,2,5.28,12.97614,77.64328,132.93,-1.28,131.65
+12,"Indiranagar",2335,2,2,"Independent House","Semi-Furnished",8,0,6.3,12.98447,77.64306,203.41,1.14,204.55
+13,"Indiranagar",2277,2,2,"Penthouse","Semi-Furnished",3,1,6.19,12.97099,77.64568,220.57,5.88,226.45
+14,"Indiranagar",1472,3,3,"Villa","Semi-Furnished",18,1,5.81,12.98534,77.63407,141.49,-0.04,141.45
+15,"Indiranagar",3445,3,2,"Apartment","Unfurnished",19,1,5.38,12.9735,77.64732,291.28,-0.62,290.66
+16,"Koramangala",1568,3,2,"Apartment","Fully-Furnished",18,0,6.43,12.94212,77.63135,129.75,-1.32,128.43
+17,"Koramangala",1373,3,3,"Penthouse","Semi-Furnished",3,0,5.76,12.93721,77.62972,144.26,-1.78,142.48
+18,"Koramangala",1701,3,3,"Villa","Fully-Furnished",16,1,7.12,12.93619,77.62351,155.87,1.89,157.76
+19,"Koramangala",1596,1,1,"Villa","Unfurnished",15,1,6.87,12.93716,77.61852,128.5,0.28,128.78
+20,"Koramangala",1617,2,1,"Independent House","Unfurnished",19,0,6.59,12.9316,77.61869,119.73,-1.8,117.93
+21,"Koramangala",2372,2,1,"Penthouse","Fully-Furnished",8,0,6.13,12.92899,77.62092,213.34,-1.8,211.54
+22,"Koramangala",1887,1,1,"Villa","Fully-Furnished",3,0,6.76,12.93714,77.61852,167.48,0.78,168.26
+23,"Koramangala",2948,2,1,"Penthouse","Unfurnished",9,0,5.38,12.93456,77.61826,253.3,0.92,254.22
+24,"Koramangala",4145,2,1,"Independent House","Fully-Furnished",11,0,7.14,12.94094,77.61868,333.87,-0.25,333.62
+25,"Koramangala",1777,3,3,"Villa","Fully-Furnished",1,1,6.89,12.93348,77.62688,174.16,-0.55,173.61
+26,"Koramangala",3232,2,1,"Independent House","Semi-Furnished",14,2,6.68,12.94057,77.62061,255.85,0.06,255.91
+27,"Koramangala",3155,3,2,"Apartment","Unfurnished",4,1,5.35,12.942,77.62889,262.88,6.1,268.98
+28,"Koramangala",2204,2,2,"Villa","Fully-Furnished",9,2,5.49,12.92931,77.62509,196.18,-0.02,196.16
+29,"Koramangala",3877,2,2,"Independent House","Fully-Furnished",8,0,5.25,12.93397,77.61837,319.04,1.72,320.76
+30,"Koramangala",3393,4,4,"Apartment","Unfurnished",0,1,5.89,12.94185,77.61861,294.14,6.5,300.64
+31,"Whitefield",1067,1,1,"Penthouse","Fully-Furnished",8,0,17.69,12.96736,77.74782,64.16,-1.13,63.03
+32,"Whitefield",3574,4,4,"Independent House","Semi-Furnished",1,0,16.78,12.97136,77.74498,200.95,8.3,209.25
+33,"Whitefield",2248,2,1,"Apartment","Fully-Furnished",1,2,17.58,12.97212,77.74693,117.77,6.83,124.6
+34,"Whitefield",1785,3,3,"Villa","Fully-Furnished",2,1,16.89,12.9748,77.7448,115.02,-1.56,113.46
+35,"Whitefield",2088,3,3,"Villa","Unfurnished",18,0,17.61,12.96663,77.75444,111.33,1.53,112.86
+36,"Whitefield",3672,3,2,"Independent House","Fully-Furnished",15,2,18.15,12.96615,77.74421,187.11,-0.5,186.61
+37,"Whitefield",2502,4,4,"Apartment","Semi-Furnished",19,1,18.29,12.96512,77.75225,129.44,-0.11,129.33
+38,"Whitefield",3560,3,3,"Villa","Unfurnished",4,2,16.68,12.96299,77.74386,199.91,6.1,206.01
+39,"Whitefield",4678,3,3,"Penthouse","Fully-Furnished",2,2,16.81,12.97046,77.75681,271.53,4.63,276.16
+40,"Whitefield",2283,2,2,"Villa","Unfurnished",19,2,18.27,12.9764,77.74409,113.07,1.64,114.71
+41,"Whitefield",1480,1,1,"Apartment","Unfurnished",13,1,18.48,12.97059,77.7535,56.93,-1.08,55.85
+42,"Whitefield",1779,1,1,"Independent House","Fully-Furnished",8,0,17.14,12.97203,77.75047,83.68,-0.57,83.11
+43,"Whitefield",2010,4,4,"Apartment","Unfurnished",17,2,17.32,12.96637,77.74654,103.33,-0.24,103.09
+44,"Whitefield",3432,3,2,"Penthouse","Fully-Furnished",5,1,18.38,12.96503,77.75533,200.42,-0.96,199.46
+45,"Whitefield",4516,4,4,"Apartment","Unfurnished",7,2,17.68,12.96264,77.75207,241.32,-1.95,239.37
+46,"Jayanagar",1652,3,2,"Apartment","Unfurnished",6,0,5.52,12.92885,77.5815,132.63,-1.99,130.64
+47,"Jayanagar",3513,3,3,"Villa","Fully-Furnished",15,0,4.79,12.93817,77.58916,286.16,1.61,287.77
+48,"Jayanagar",3105,4,3,"Penthouse","Fully-Furnished",19,1,4.59,12.92603,77.57909,263.04,1.89,264.93
+49,"Jayanagar",3840,3,3,"Apartment","Semi-Furnished",13,0,4.98,12.93234,77.57856,297.12,0.19,297.31
+50,"Jayanagar",2404,2,2,"Villa","Semi-Furnished",6,1,5.04,12.9372,77.58398,199.96,-1.13,198.83
+51,"Jayanagar",3115,3,2,"Villa","Unfurnished",13,1,5.07,12.93712,77.58241,249.16,-0.22,248.94
+52,"Jayanagar",2523,2,2,"Apartment","Unfurnished",5,0,5.55,12.92968,77.58954,194.23,1.53,195.76
+53,"Jayanagar",3443,2,1,"Apartment","Unfurnished",6,2,5.32,12.93729,77.57806,260.14,-1.11,259.03
+54,"Jayanagar",3047,3,3,"Apartment","Semi-Furnished",8,0,4.54,12.93381,77.58132,242.04,0.39,242.43
+55,"Jayanagar",2146,4,3,"Penthouse","Semi-Furnished",17,2,5.97,12.93396,77.58547,188.48,0.53,189.01
+56,"Jayanagar",2057,4,3,"Apartment","Fully-Furnished",7,1,4.46,12.92349,77.58478,176.16,-1.89,174.27
+57,"Jayanagar",2586,3,2,"Penthouse","Fully-Furnished",0,0,4.05,12.92619,77.58143,232.8,4.53,237.33
+58,"Jayanagar",3678,3,2,"Independent House","Unfurnished",4,2,4.95,12.93179,77.58193,286.7,6.41,293.11
+59,"Jayanagar",1475,2,1,"Apartment","Semi-Furnished",3,0,5.57,12.93665,77.57654,117.71,1.87,119.58
+60,"Jayanagar",3345,2,1,"Villa","Semi-Furnished",5,1,4.28,12.92588,77.57998,269.52,-0.72,268.8
+61,"HSR Layout",1546,1,1,"Villa","Semi-Furnished",12,0,8.37,12.91144,77.63498,100.72,-0.35,100.37
+62,"HSR Layout",4291,3,3,"Penthouse","Fully-Furnished",19,2,7.76,12.91009,77.64232,288.86,-0.82,288.04
+63,"HSR Layout",4494,4,4,"Penthouse","Semi-Furnished",16,2,7.9,12.91383,77.64526,307.72,1.05,308.77
+64,"HSR Layout",2675,3,3,"Penthouse","Fully-Furnished",0,1,8.47,12.91547,77.648,203.23,6.6,209.83
+65,"HSR Layout",1917,1,1,"Apartment","Semi-Furnished",4,1,8.1,12.92154,77.64783,118.36,-1.67,116.69
+66,"HSR Layout",2499,2,2,"Apartment","Unfurnished",9,0,8.37,12.9111,77.64252,154.21,-0.47,153.74
+67,"HSR Layout",3971,2,2,"Independent House","Fully-Furnished",18,1,8.34,12.9128,77.6432,244.3,-1.51,242.79
+68,"HSR Layout",1304,1,1,"Apartment","Unfurnished",2,2,8.21,12.90979,77.63704,78.86,-0.44,78.42
+69,"HSR Layout",4134,4,4,"Apartment","Fully-Furnished",18,2,7.66,12.90697,77.63994,269.01,-1.99,267.02
+70,"HSR Layout",2037,2,1,"Apartment","Fully-Furnished",14,1,8.18,12.92159,77.64025,125.23,-1.29,123.94
+71,"HSR Layout",2597,2,1,"Independent House","Fully-Furnished",16,1,9.03,12.90725,77.64656,157.59,1.85,159.44
+72,"HSR Layout",2829,2,2,"Apartment","Semi-Furnished",7,2,8.22,12.90677,77.64579,179.4,-0.58,178.82
+73,"HSR Layout",875,2,2,"Penthouse","Unfurnished",11,2,8.92,12.92053,77.64134,69.42,-1,68.42
+74,"HSR Layout",4383,3,2,"Apartment","Unfurnished",2,0,8.88,12.91983,77.63483,280.65,5.58,286.23
+75,"HSR Layout",3220,3,2,"Villa","Unfurnished",2,2,8.3,12.91568,77.6469,221.07,5.73,226.8
+76,"Malleshwaram",2876,4,4,"Independent House","Fully-Furnished",5,2,2.92,12.99257,77.57794,228.69,0.39,229.08
+77,"Malleshwaram",4395,4,3,"Penthouse","Fully-Furnished",14,0,3.16,13.00494,77.56882,343.11,1.69,344.8
+78,"Malleshwaram",4381,4,4,"Independent House","Unfurnished",14,1,3.34,12.99652,77.57579,320.46,-0.86,319.6
+79,"Malleshwaram",3721,3,3,"Independent House","Fully-Furnished",11,2,3.42,13.00557,77.56908,275.59,-1.11,274.48
+80,"Malleshwaram",2948,2,1,"Apartment","Semi-Furnished",12,2,4.3,12.99496,77.56957,207.39,-1.25,206.14
+81,"Malleshwaram",3734,4,3,"Independent House","Semi-Furnished",11,0,4.23,12.99638,77.57463,277.27,-1.37,275.9
+82,"Malleshwaram",3326,2,1,"Villa","Unfurnished",8,2,2.91,12.99868,77.56616,247.3,-0.8,246.5
+83,"Malleshwaram",1780,2,2,"Apartment","Semi-Furnished",4,2,3.33,12.99314,77.57248,135.4,1.04,136.44
+84,"Malleshwaram",3510,2,2,"Villa","Fully-Furnished",18,0,4.09,12.99179,77.56513,259.62,-0.49,259.13
+85,"Malleshwaram",1364,1,1,"Villa","Unfurnished",13,2,4.29,13.00082,77.56879,100.22,-0.67,99.55
+86,"Malleshwaram",4268,4,4,"Independent House","Fully-Furnished",0,2,3.05,12.99369,77.57901,330.01,7.99,338
+87,"Malleshwaram",3434,4,4,"Penthouse","Fully-Furnished",16,2,4.79,13.0038,77.57637,275.27,1.27,276.54
+88,"Malleshwaram",3701,4,4,"Penthouse","Unfurnished",13,2,4.31,13.00298,77.57732,290.79,-0.5,290.29
+89,"Malleshwaram",2034,3,3,"Penthouse","Fully-Furnished",14,0,3.27,12.99563,77.57086,173.24,0.52,173.76
+90,"Malleshwaram",4216,3,3,"Independent House","Fully-Furnished",11,2,2.81,12.99218,77.57717,310.79,1.93,312.72
