@@ -182,75 +182,6 @@ export default function Login({ onLogin, triggerToast }) {
           </p>
         </div>
 
-        {/* 1-CLICK QUICK ROLE LOGIN CARDS (User vs Admin) */}
-        <div className="space-y-2.5">
-          <div className="flex items-center justify-between px-1">
-            <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-              <Sparkles size={12} className="text-emerald-400" />
-              <span>One-Click Demo Roles</span>
-            </span>
-            <span className="text-[10px] text-slate-500 font-mono">Viva & Presentation</span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-            {/* Admin Role Button */}
-            <button
-              type="button"
-              onClick={() => handleQuickLogin('admin')}
-              disabled={loading}
-              className="p-3.5 rounded-2xl bg-gradient-to-br from-indigo-950/60 via-slate-900/90 to-slate-950 border border-indigo-500/30 hover:border-indigo-400/80 shadow-lg shadow-indigo-950/30 text-left transition-all hover:scale-[1.02] cursor-pointer group flex flex-col justify-between min-h-[96px] ios-pressable"
-            >
-              <div className="flex items-center justify-between w-full">
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold">
-                    <Shield size={14} />
-                  </div>
-                  <div>
-                    <h3 className="text-xs font-bold text-white group-hover:text-indigo-300 transition-colors">
-                      Administrator
-                    </h3>
-                    <p className="text-[10px] text-slate-400 font-mono">admin@estatesense.ai</p>
-                  </div>
-                </div>
-                <span className="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-                  Full Admin
-                </span>
-              </div>
-              <p className="text-[10px] text-slate-400 mt-2 line-clamp-1">
-                Admin Panel • Retraining • System Latency
-              </p>
-            </button>
-
-            {/* Standard User Role Button */}
-            <button
-              type="button"
-              onClick={() => handleQuickLogin('user')}
-              disabled={loading}
-              className="p-3.5 rounded-2xl bg-gradient-to-br from-emerald-950/60 via-slate-900/90 to-slate-950 border border-emerald-500/30 hover:border-emerald-400/80 shadow-lg shadow-emerald-950/30 text-left transition-all hover:scale-[1.02] cursor-pointer group flex flex-col justify-between min-h-[96px] ios-pressable"
-            >
-              <div className="flex items-center justify-between w-full">
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
-                    <UserCheck size={14} />
-                  </div>
-                  <div>
-                    <h3 className="text-xs font-bold text-white group-hover:text-emerald-300 transition-colors">
-                      Regular User
-                    </h3>
-                    <p className="text-[10px] text-slate-400 font-mono">user@estatesense.ai</p>
-                  </div>
-                </div>
-                <span className="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                  User Role
-                </span>
-              </div>
-              <p className="text-[10px] text-slate-400 mt-2 line-clamp-1">
-                Valuation • GIS Maps • Compare Properties
-              </p>
-            </button>
-          </div>
-        </div>
-
         {/* Glassmorphic Login Card */}
         <div className="glass-panel rounded-2xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl shadow-2xl p-6 sm:p-8 relative">
           
@@ -444,8 +375,8 @@ export default function Login({ onLogin, triggerToast }) {
             </button>
           </form>
 
-          {/* Guest Mode Link */}
-          <div className="mt-5 pt-4 border-t border-white/5 text-center">
+          {/* Guest Mode & Admin Mode Links */}
+          <div className="mt-5 pt-4 border-t border-white/5 flex flex-col items-center gap-2.5">
             <button
               type="button"
               onClick={handleGuestLogin}
@@ -453,6 +384,17 @@ export default function Login({ onLogin, triggerToast }) {
             >
               <Compass size={13} className="text-emerald-400" />
               <span>Continue as Guest (Explore without credentials)</span>
+              <ArrowRight size={12} />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => handleQuickLogin('admin')}
+              disabled={loading}
+              className="text-xs text-slate-400 hover:text-indigo-400 transition-colors inline-flex items-center gap-1.5 cursor-pointer ios-pressable disabled:opacity-50"
+            >
+              <Shield size={13} className="text-indigo-400" />
+              <span>Continue as Admin</span>
               <ArrowRight size={12} />
             </button>
           </div>
