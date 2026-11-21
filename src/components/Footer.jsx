@@ -166,9 +166,13 @@ export default function Footer({ setCurrentPage, uploadedDataset }) {
 
         {/* Divider */}
         <div className="border-t border-white/5 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex flex-col sm:flex-row items-center gap-3">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
             <p className="text-[11px] text-slate-400">
               © {new Date().getFullYear()} EstateSense AI. All rights reserved.
+            </p>
+            <span className="hidden sm:inline text-slate-700">•</span>
+            <p className="text-[11px] text-slate-400">
+              Created by <span className="text-emerald-400 font-semibold tracking-wide">Sarthak</span>
             </p>
           </div>
 
